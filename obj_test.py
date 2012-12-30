@@ -39,7 +39,7 @@ def on_draw():
     gluLookAt(0, 3, 3, 0, 0, 0, 0, 1, 0)
     glRotatef(r, 0, 1, 0)
     glRotatef(r/2, 1, 0, 0)
-    bunny.draw()
+    object.draw()
 
 r = 0
 def update(dt):
@@ -53,6 +53,6 @@ if len(sys.argv) == 1:
 else:
     objfile = sys.argv[1]
 
-bunny = obj.OBJ(objfile)
+object = obj.OBJ(objfile)
 
 pyglet.app.run()
