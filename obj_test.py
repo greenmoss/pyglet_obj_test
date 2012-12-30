@@ -40,7 +40,6 @@ def on_draw():
     glRotatef(r, 0, 1, 0)
     glRotatef(r/2, 1, 0, 0)
     bunny.draw()
-    w.flip()
 
 r = 0
 def update(dt):
