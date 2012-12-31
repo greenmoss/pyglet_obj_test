@@ -5,6 +5,8 @@ Test importing .obj files into pyglet. Derived from `contrib/model/examples/obj_
 
 Usage
 =====
+Install python, then `pip install hg+https://pyglet.googlecode.com/hg/`. As of December 30, 2012, that is version 1.2alpha1.
+
 - To see a working example: `./obj_test.py rabbit.obj`
 - To see a failing example: `./obj_test.py asteroid.obj`
 
