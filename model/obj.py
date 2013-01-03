@@ -126,6 +126,8 @@ class OBJ:
                 self.mesh_list.append(mesh)
                 group = None
             elif values[0] == 'f':
+                if len(normals) == 1: warnings.warn('No Normals found: black screen?')
+
                 if mesh is None:
                     mesh = Mesh('')
                     self.mesh_list.append(mesh)
