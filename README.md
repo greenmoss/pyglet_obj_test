@@ -7,7 +7,4 @@ Usage
 =====
 Install python, then `pip install hg+https://pyglet.googlecode.com/hg/`. As of December 30, 2012, that is version 1.2alpha1.
 
-- To see a working example: `./obj_test.py rabbit.obj`
-- To see a failing example: `./obj_test.py asteroid.obj`
-
-Hopefully I will be able to figure out why it's failing and fix it.
+- To see an example: `./obj_test.py rabbit.obj`
