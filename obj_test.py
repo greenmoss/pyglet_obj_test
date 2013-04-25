@@ -37,15 +37,24 @@ def on_draw():
     w.clear()
     glLoadIdentity()
     gluLookAt(0, 3, 3, 0, 0, 0, 0, 1, 0)
-    glRotatef(r, 0, 1, 0)
-    glRotatef(r/2, 1, 0, 0)
+    glRotatef(rotation, 0, 1, 0)
+    glRotatef(rotation/2, 1, 0, 0)
     object.draw()
 
-r = 0
+@w.event
+def on_key_press(symbol, modifiers):
+    global paused
+    if symbol == pyglet.window.key.SPACE:
+        paused = not paused
+
+rotation = 0
+paused = False
 def update(dt):
-    global r
-    r += 90*dt
-    if r > 720: r = 0
+    global paused
+    if paused: return
+    global rotation
+    rotation += 90*dt
+    if rotation > 720: rotation = 0
 pyglet.clock.schedule(update)
 
 if len(sys.argv) == 1:
