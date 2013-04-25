@@ -33,6 +33,24 @@ class Material(object):
             (GLfloat * 4)(*(self.emission + [self.opacity])))
         glMaterialf(face, GL_SHININESS, self.shininess)
 
+    def verify_dimensions(self):
+        self.verify('width')
+        self.verify('height')
+
+    def verify(self, dimension):
+        value = self.texture.__getattribute__(dimension)
+        while value > 1:
+            div_float = float(value) / 2.0
+            div_int = int(div_float)
+            if not (div_float == div_int):
+                warnings.warn(
+                    'texture %s is %d, which is not a power of 2: partial mesh coverage?'%(
+                        dimension, self.texture.__getattribute__(dimension)
+                    )
+                )
+                break
+            value = div_int
+
 class MaterialGroup(object):
     def __init__(self, material):
         self.material = material
@@ -205,6 +223,8 @@ class OBJ:
                         warnings.warn('Could not load texture %s' % values[1])
             except:
                 warnings.warn('Parse error in %s.' % filename)
+
+        if material.texture: material.verify_dimensions()
 
     def draw(self):
         for mesh in self.mesh_list:
