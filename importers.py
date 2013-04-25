@@ -95,7 +95,7 @@ class Mesh(object):
             glEndList()
             self.list = list
 
-class OBJ:
+class Wavefront(object):
     def __init__(self, filename, file=None, path=None):
         self.materials = {}
         self.meshes = {}        # Name mapping
@@ -180,7 +180,7 @@ class OBJ:
                     if i == 0:
                         v1 = vertex
                     vlast = vertex
-                    
+
     def open_material_file(self, filename):
         '''Override for loading from archive/network etc.'''
         return open(os.path.join(self.path, filename), 'r')

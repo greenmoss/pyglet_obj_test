@@ -12,7 +12,7 @@ import ctypes
 import pyglet
 
 from pyglet.gl import *
-from model import obj
+import importers
 
 w = pyglet.window.Window()
 
@@ -23,6 +23,9 @@ glLightfv(GL_LIGHT0, GL_DIFFUSE, fourfv(0.8, 0.8, 0.8, 1.0))
 glEnable(GL_LIGHT0)
 glEnable(GL_LIGHTING)
 glEnable(GL_DEPTH_TEST)
+
+rotation = 0
+paused = False
 
 @w.event
 def on_resize(width, height):
@@ -47,21 +50,21 @@ def on_key_press(symbol, modifiers):
     if symbol == pyglet.window.key.SPACE:
         paused = not paused
 
-rotation = 0
-paused = False
 def update(dt):
     global paused
     if paused: return
+
     global rotation
     rotation += 90*dt
     if rotation > 720: rotation = 0
+
 pyglet.clock.schedule(update)
 
 if len(sys.argv) == 1:
-    objfile = os.path.join(os.path.split(__file__)[0], 'rabbit.obj')
+    imported_path = os.path.join(os.path.split(__file__)[0], 'rabbit.obj')
 else:
-    objfile = sys.argv[1]
+    imported_path = sys.argv[1]
 
-object = obj.OBJ(objfile)
+object = importers.Wavefront(imported_path)
 
 pyglet.app.run()
