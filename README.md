@@ -1,3 +1,8 @@
+DEPRECATED!
+===========
+
+This project is deprecated! All activity has moved to a much-more usable Python library called [PyWavefront](https://github.com/greenmoss/PyWavefront).
+
 pyglet obj test
 ===============
 
